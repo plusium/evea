@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+    <title>evea API - 简易 EVE API 服务器</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div style="position:relative;top:20px;left:10px;">
+    <h1>evea API</h1>
+    <h2>EVE online 自建简易 API 服务器</h2>
+    <p>提供部分技能相关的接口和一个简易角色编辑界面、一个快速技能导入工具，可最低限度满足 EVEMon 等工具的使用。</p>
+    <p>由于不能修改 API 服务器的地址，以下工具暂不适用：EFT 、pyfa。</p>
+    </br>
+    <p>API 服务器地址： http://evea.sinaapp.com </p>
+    <p>API 服务器状态： <b>{% if opened %}开启{% else %}关闭{% endif %}</b></p>
+    </br>
+    <p>{% if register_ok %}<h1>注册成功</h1>{% else %}<a href="/admin/register/">注册一个帐号</a>，或者{% endif %}<a href="/admin/">登录角色管理界面</a></p>
+    <p><a target="_blank" href="http://bbs.eve-china.com/space-uid-248904.html">公测Plusium @ECF</a> 强力提供</p>
+    </br>
+    <p>简易使用方法：</p>
+    <p>1：注册一个账号，登录后增加一个角色。</p>
+    <p>2：在角色列表页面获得角色的 keyID 和 vCode。</p>
+    <p>3：使用一个独立的最新版 EVEMon，在设置界面（General --> Network）添加一个 API Provider，地址为 http://evea.sinaapp.com</p>
+    <p>4：在 EVEMon 设置界面的 General --> Updates 里禁用时钟同步和自动更新，将 Account Status 以下的所有 Query 的时间间隔改为 Never。</p>
+    <p>5：使用第 2 步得到的 keyID 和 vCode 在 EVEMon 中添加角色（File --> Add API Key）。</p>
+    <p>6：以后随时登录网站，使用角色管理界面或者快速技能导入工具，对角色属性信息及技能信息进行更新。</p>
+    <p>详细使用方法见<a target="_blank" href="http://bbs.eve-china.com/forum.php?mod=viewthread&tid=619536&fromuid=248904">ECF帖子</a></p>
+    </br>
+    <p>版本更新记录：</p>
+    <p>2014年04月03日 1.2：添加快速技能导入工具，并关闭1.1版添加的附加接口，详见上面ECF帖子2楼</p>
+    <p>2014年04月01日 1.1：添加附加接口： /api/updateCharInfo/  用于更新技能信息，详见上面ECF帖子2楼</p>
+    <p>2014年03月28日 1.0：初始版本上线。</p>
+    </br>
+    <p>感谢：CCP，sinaapp.com，python.org，djangoproject.com</p>
+    <p>数据来源：http://community.eveonline.com/community/fansites/toolkit/  版本：Rubicon_1.3_95173</p>
+    <p>©CCP hf. All rights reserved. Used with permission.</p>
+</div>
+</body>
+</html>

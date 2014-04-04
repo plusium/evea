@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{% block title %}用户注册{% endblock %}
+
+{% block content %}
+<h1>用户注册</h1>
+{% if has_account %}
+  </br><p>已经登录了账号，不能重复注册。</p>
+{% else %}
+  <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="注册" />
+    <script type="text/javascript">document.getElementById("id_username").focus();</script>
+  </form>
+{% endif %}
+{% endblock %}

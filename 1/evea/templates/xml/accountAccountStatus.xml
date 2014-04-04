@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <paidUntil>2035-01-01 10:00:00</paidUntil>
+    <createDate>2006-06-12 10:00:00</createDate>
+    <logonCount>5</logonCount>
+    <logonMinutes>5</logonMinutes>
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>

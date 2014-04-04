@@ -1,0 +1,109 @@
+{% extends "admin/base.html" %}
+
+{% block title %}EVE Log Skillinfo2JSON Parser{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+FIRST_CLICK = true;
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function btnParse(_this) {
+  var txtInput = $("txtInput");
+  var inputStr = txtInput.value;
+  try {
+    $("id_submit").disabled = "disabled";
+    // parse skill list
+    var skillList = extractSkills(inputStr);
+    // output
+    var parseResult = output2JSON(skillList);
+    $("txtOutput").value = parseResult.skillinfo;
+    if (parseResult.skillCount > 0) {
+      $("id_submit").disabled = "";
+      $("showResult").innerText = "转换成功, 共有" + parseResult.skillCount + "个技能, 共" + parseResult.totalSP + "个技能点.";
+    }
+    else $("showResult").innerText = "转换失败:没有任何技能信息";
+  } catch(e) {
+    $("showResult").innerText = "转换失败:" + e.message;
+  }
+}
+
+function cleartextarea(_this) {
+  if (FIRST_CLICK) {
+    _this.value = "";
+    FIRST_CLICK = false;
+  }
+}
+
+// get skill level and points from log
+function extractSkills(inputStr) {
+  // reg exp
+  var REG_SKILL = /.+\[\d+L,\s(\d+),.+280:\s(\d),\s275:\s\d+.0,\s276:\s(\d+).+/
+
+  var skillSet = [];
+  var skill;
+  var inputLines = inputStr.split("\n");
+  var ptr = 0;
+  var str;
+  var matchResult;
+
+  while (ptr < inputLines.length) {
+    // get skill index
+    str = inputLines[ptr++];
+
+    // end of skill set
+    if (str.match(/ProcessSessionChange: Prime (post)/)) {
+      break;
+    }
+
+    // search for skill
+    if (matchResult = REG_SKILL.exec(str)) {
+      skill = {};
+      skillSet.push(skill);
+      skill.id = matchResult[1];
+      skill.lv = matchResult[2];
+      skill.pt = matchResult[3];
+    }
+  }
+
+  return skillSet;
+}
+
+// construct JSON output
+function output2JSON(skillList) {
+  var totalSP = 0;
+  var skillArray = [];
+  var skills = {"skillinfo": skillArray};
+  for (var skillIdx in skillList) {
+    skill = skillList[skillIdx];
+    totalSP += parseInt(skill.pt);
+    skillArray.push({"id": skill.id, "lv": skill.lv, "pt": skill.pt});
+  }
+  return {"skillinfo": JSON.stringify(skills), "totalSP": totalSP, "skillCount": skillList.length};
+}
+</script>
+<form action="/api/updateCharInfo/" method="post">{% csrf_token %}
+<h1>EVE Log Skillinfo2JSON Parser</h1>
+</br>
+此工具大部分代码来源于：
+<a href="http://bbs.eve-china.com/space-uid-341493.html" target="_blank">BadLoop@ECF</a>，
+<a href="http://bbs.eve-china.com/forum.php?mod=viewthread&tid=595971" target="_blank">[新年放福利]国服EVEMON技能导出助手</a>
+</br>
+<p>本人对代码进行了精简，并改为输出 JSON 格式</p>
+</br>
+<p>使用说明</p>
+<p>1、粘贴EVE的Log到左边输入框内，关于Log的获取方法请见<a href="http://bbs.eve-china.com/thread-583165-1-1.html" target="_blank">这里</a></p>
+<p>2、按下面的开始转换按钮</p>
+<p>3、按下面的提交技能信息按钮</p>
+<textarea rows=10 cols=40 id="txtInput" onClick="cleartextarea(this);">将EVE的log内容粘贴在此处</textarea>
+<textarea rows=10 cols=40 id="txtOutput" onClick="this.focus();this.select();" readonly="true" name="jsondict">待提交的技能信息</textarea>
+</br>
+<a id="showResult" style="font-size:14px;color:red;font-weight:bold;"></a>
+</br>
+<input type="hidden" value="{{ characterID }}" name="characterID" />
+<input type="button" value="1、开始转换" style="font-size:22px;" onClick="btnParse();" />
+<input type="submit" value="2、提交技能信息" style="font-size:22px;" id="id_submit" disabled="disabled" />
+</form>
+{% endblock %}

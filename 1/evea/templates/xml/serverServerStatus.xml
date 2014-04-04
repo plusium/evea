@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <serverOpen>{{ is_server_open }}</serverOpen>
+    <onlinePlayers>5</onlinePlayers>
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>

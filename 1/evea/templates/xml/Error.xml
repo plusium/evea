@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <error code="{{ error_code }}">{{ error_msg }}</error>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>

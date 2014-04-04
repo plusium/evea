@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <characterID>{{ char.id }}</characterID>
+    <characterName>{{ char.char_name }}</characterName>
+    <race>加达里</race>
+    <bloodLine>阿赫尔</bloodLine>
+    <accountBalance>1234567890.00</accountBalance>
+    <skillPoints>12345678</skillPoints>
+    <nextTrainingEnds>{{ current_time }}</nextTrainingEnds>
+    <shipName>{{ char.char_name }}的神使级</shipName>
+    <shipTypeID>11567</shipTypeID>
+    <shipTypeName>神使级</shipTypeName>
+    <corporationID>1000044</corporationID>
+    <corporation>应用知识学院</corporation>
+    <corporationDate>2006-06-12 10:00:00</corporationDate>
+    <securityStatus>0</securityStatus>
+    <rowset name="employmentHistory" key="recordID" columns="recordID,corporationID,startDate">
+      <row recordID="1" corporationID="1000044" startDate="2006-06-12 10:00:00" />
+    </rowset>
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>

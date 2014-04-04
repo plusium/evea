@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+
+{% block title %}EVE Log Skillinfo2JSON Parser{% endblock %}
+
+{% block content %}
+<h1>EVE Log Skillinfo2JSON Parser</h1>
+</br>
+{% if success %}
+<b>“{{ char_name }}”的技能导入成功。</b><a href="/admin/datas/character/">转到角色列表页面</a>
+{% else %}
+<p><b>技能导入失败：</b>{{ msg }}</p>
+请返回重新转换
+{% endif %}
+{% endblock %}

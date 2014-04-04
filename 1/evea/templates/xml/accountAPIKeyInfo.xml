@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <key accessMask="25559048" type="Account" expires="">
+      <rowset name="characters" key="characterID" columns="characterID,characterName,corporationID,corporationName">
+        {% for char in chars %}
+        <row characterID="{{ char.id }}" characterName="{{ char.char_name }}" corporationID="1000044" corporationName="应用知识学院" />
+        {% endfor %}
+      </rowset>
+    </key>
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>
