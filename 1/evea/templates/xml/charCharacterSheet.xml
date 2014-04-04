@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <characterID>{{ char.id }}</characterID>
+    <name>{{ char.char_name }}</name>
+    <DoB>2006-06-12 10:00:00</DoB>
+    <race>加达里</race>
+    <bloodLine>阿赫尔</bloodLine>
+    <ancestry>占星师</ancestry>
+    <gender>女性</gender>
+    <corporationName>应用知识学院</corporationName>
+    <corporationID>1000044</corporationID>
+    <allianceName />
+    <allianceID>0</allianceID>
+    <cloneName>X级克隆</cloneName>
+    <cloneSkillPoints>450000000</cloneSkillPoints>
+    <balance>1234567890.00</balance>
+    <attributeEnhancers>
+      {% if char.per_implant.implant_value %}
+      <perceptionBonus>
+        <augmentatorName>{{ char.per_implant.implant_name }}</augmentatorName>
+        <augmentatorValue>{{ char.per_implant.implant_value }}</augmentatorValue>
+      </perceptionBonus>
+      {% endif %}
+      {% if char.mem_implant.implant_value %}
+      <memoryBonus>
+        <augmentatorName>{{ char.mem_implant.implant_name }}</augmentatorName>
+        <augmentatorValue>{{ char.mem_implant.implant_value }}</augmentatorValue>
+      </memoryBonus>
+      {% endif %}
+      {% if char.wil_implant.implant_value %}
+      <willpowerBonus>
+        <augmentatorName>{{ char.wil_implant.implant_name }}</augmentatorName>
+        <augmentatorValue>{{ char.wil_implant.implant_value }}</augmentatorValue>
+      </willpowerBonus>
+      {% endif %}
+      {% if char.int_implant.implant_value %}
+      <intelligenceBonus>
+        <augmentatorName>{{ char.int_implant.implant_name }}</augmentatorName>
+        <augmentatorValue>{{ char.int_implant.implant_value }}</augmentatorValue>
+      </intelligenceBonus>
+      {% endif %}
+      {% if char.cha_implant.implant_value %}
+      <charismaBonus>
+        <augmentatorName>{{ char.cha_implant.implant_name }}</augmentatorName>
+        <augmentatorValue>{{ char.cha_implant.implant_value }}</augmentatorValue>
+      </charismaBonus>
+      {% endif %}
+    </attributeEnhancers>
+    <attributes>
+      <intelligence>{{ char.intelligence }}</intelligence>
+      <memory>{{ char.memory }}</memory>
+      <charisma>{{ char.charisma }}</charisma>
+      <perception>{{ char.perception }}</perception>
+      <willpower>{{ char.willpower }}</willpower>
+    </attributes>
+    <rowset name="skills" key="typeID" columns="typeID,skillpoints,level,published">
+      {% for skill in skills %}
+      <row typeID="{{ skill.skill.id }}" skillpoints="{{ skill.skill_point }}" level="{{ skill.skill_level }}" published="1" />
+      {% endfor %}
+    </rowset>
+    <rowset name="certificates" key="certificateID" columns="certificateID" />
+    <rowset name="corporationRoles" key="roleID" columns="roleID,roleName" />
+    <rowset name="corporationRolesAtHQ" key="roleID" columns="roleID,roleName" />
+    <rowset name="corporationRolesAtBase" key="roleID" columns="roleID,roleName" />
+    <rowset name="corporationRolesAtOther" key="roleID" columns="roleID,roleName" />
+    <rowset name="corporationTitles" key="titleID" columns="titleID,titleName" />
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>

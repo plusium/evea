@@ -1,0 +1,31 @@
+{% extends "admin/change_form.html" %}
+
+{% block after_field_sets %}
+<p>***注：如果使用英文版 EVEMon，需要选择英文版的植入体。如果使用带有中文物品包的 EVEMon，则需要选择中文版的植入体。</p>
+</br>
+<h2>修改 角色技能</h2>
+<p>***注：技能等级处输入0-5的数字或留空。0表示已吸收，留空表示未吸收。</p>
+{% if adminform.form.skill_info.skill_count %}<p>目前掌握技能：{{ adminform.form.skill_info.skill_count }}项（共计{{ adminform.form.skill_info.skill_point }}个技能点）</p>{% endif %}
+<table width="500" border="1">
+  <tr>
+    <th width="100">技能组</th>
+    <th width="200">技能名称</th>
+    <th width="100">技能等级</th>
+    <th>技能点数</th>
+  </tr>
+  {% for skill_field in adminform.form.skill_fields %}
+  {% if skill_field.field.errors %}<tr><td colspan="4">{{ skill_field.field.errors }}</td></tr>{% endif %}
+  <tr>
+    <td><label for="id_skillfield_{{ skill_field.skill_id }}">{{ skill_field.group_name }}</label></td>
+    <td><label for="id_skillfield_{{ skill_field.skill_id }}">{{ skill_field.skill_name }}(x{{ skill_field.skill_rank}}):</label></td>
+    <td>{{ skill_field.field }}</td>
+    <td><label for="id_skillfield_{{ skill_field.skill_id }}">{% if skill_field.skill_point %}{{ skill_field.skill_point }}{% endif %}</label></td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% if adminform and add %}
+<script type="text/javascript">document.getElementById("id_account").options[1].selected = true;</script>
+{% endif %}
+
+{% endblock %}

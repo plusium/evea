@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<eveapi version="2">
+  <currentTime>{{ current_time }}</currentTime>
+  <result>
+    <rowset name="characters" key="characterID" columns="name,characterID,corporationName,corporationID">
+      {% for char in chars %}
+      <row name="{{ char.char_name }}" characterID="{{ char.id }}" corporationName="应用知识学院" corporationID="1000044" />
+      {% endfor %}
+    </rowset>
+  </result>
+  <cachedUntil>{{ cached_until_time }}</cachedUntil>
+</eveapi>
