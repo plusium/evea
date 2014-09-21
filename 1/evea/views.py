@@ -85,6 +85,7 @@ def updateCharInfo(request):
             skills = Skill.objects.all()
             
             charskills_to_create = []
+            skills_unknown = []
             
             for oneskill in skillinfo:
                 skill_id = int(oneskill["id"])
@@ -104,27 +105,30 @@ def updateCharInfo(request):
                     # 先获得技能实例
                     skill = get_skill(skill_id, skills)
                     if skill == None:
-                        d = {'success': False, 'msg': u'没有该技能:%s' % oneskill}
-                        return render_to_response('LogSkillParserResult.html', d)
-                    
-                    obj = Character_Skills(char=char, skill=skill, 
-                        skill_level = skill_level, 
-                        skill_point = skill_point)
-                    charskills_to_create.append(obj)
+                        skills_unknown.append(skill_id)
+                    else:
+                        obj = Character_Skills(char=char, skill=skill, 
+                            skill_level = skill_level, 
+                            skill_point = skill_point)
+                        charskills_to_create.append(obj)
                 else:
                     if obj.skill_level != skill_level or obj.skill_point != skill_point:
                         # 修改
                         obj.skill_level = skill_level
                         obj.skill_point = skill_point
                         obj.save()
+                        updated = True
                     else:
                         # 不变
                         pass
             
             if len(charskills_to_create) > 0:
                 Character_Skills.objects.bulk_create(charskills_to_create)
+                updated = True
             
-            updated = True
+            if len(skills_unknown) > 0:
+                d = {'success': False, 'msg': u'技能导入成功，但是以下技能ID无法识别，已被忽略:%s等' % skills_unknown[0]}
+                return render_to_response('LogSkillParserResult.html', d)
         
         # todo:其他信息
         
@@ -136,7 +140,7 @@ def updateCharInfo(request):
         d = {'success': True, 'char_name': char.char_name}
         return render_to_response('LogSkillParserResult.html', d)
     else:
-        d = {'success': False, 'msg': u'没有任何信息被处理'}
+        d = {'success': False, 'msg': u'技能数据没有发生任何变化'}
         return render_to_response('LogSkillParserResult.html', d)
 
 def get_skill(id, skills):
