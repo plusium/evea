@@ -19,6 +19,7 @@ class Implant(models.Model):
     languageID = models.CharField(max_length=100)
     implant_type = models.SmallIntegerField()
     implant_value = models.SmallIntegerField()
+    type_id = models.PositiveIntegerField()
     
     def __unicode__(self):
         return u'槽位：%s 属性+%s %s' % (self.implant_type, self.implant_value, self.implant_name)
