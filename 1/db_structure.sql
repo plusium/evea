@@ -262,6 +262,7 @@ CREATE TABLE `datas_implant` (
   `languageID` varchar(100) NOT NULL,
   `implant_type` smallint(6) NOT NULL,
   `implant_value` smallint(6) NOT NULL,
+  `type_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

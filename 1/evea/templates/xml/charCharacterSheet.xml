@@ -16,6 +16,23 @@
     <cloneName>X级克隆</cloneName>
     <cloneSkillPoints>450000000</cloneSkillPoints>
     <balance>1234567890.00</balance>
+    <rowset name="implants" key="typeID" columns="typeID,typeName">
+      {% if char.per_implant.implant_value %}
+      <row typeID="{{ char.per_implant.type_id }}" typeName="{{ char.per_implant.implant_name }}" />
+      {% endif %}
+      {% if char.mem_implant.implant_value %}
+      <row typeID="{{ char.mem_implant.type_id }}" typeName="{{ char.mem_implant.implant_name }}" />
+      {% endif %}
+      {% if char.wil_implant.implant_value %}
+      <row typeID="{{ char.wil_implant.type_id }}" typeName="{{ char.wil_implant.implant_name }}" />
+      {% endif %}
+      {% if char.int_implant.implant_value %}
+      <row typeID="{{ char.int_implant.type_id }}" typeName="{{ char.int_implant.implant_name }}" />
+      {% endif %}
+      {% if char.cha_implant.implant_value %}
+      <row typeID="{{ char.cha_implant.type_id }}" typeName="{{ char.cha_implant.implant_name }}" />
+      {% endif %}
+    </rowset>
     <attributeEnhancers>
       {% if char.per_implant.implant_value %}
       <perceptionBonus>
