@@ -108,7 +108,7 @@ INSERT INTO datas_skillgroup (id, group_name) VALUES
 
 -- Skill
 -- 	SELECT
--- 		',(''' + CAST (i.typeID AS VARCHAR) + ''', ''' + ISNULL(t.[text], i.typeName) + ''', ''' + CAST (g.groupID AS VARCHAR) + ''', ''' + CAST (d.valueFloat AS VARCHAR) + ''')' AS insert_sql
+-- 		',(''' + CAST (i.typeID AS VARCHAR) + ''', ''' + LTRIM(RTRIM(ISNULL(t.[text], i.typeName))) + ''', ''' + CAST (g.groupID AS VARCHAR) + ''', ''' + CAST (d.valueFloat AS VARCHAR) + ''')' AS insert_sql
 -- 	FROM
 -- 		invTypes i
 -- 	INNER JOIN invGroups g ON (i.groupID = g.groupID)
@@ -528,7 +528,10 @@ INSERT INTO datas_skill (id, skill_name, skill_group_id, skill_rank) VALUES
 ,('33699', '中型无人机操控理论', '273', '2')
 ,('33856', '勘探护卫舰', '257', '4')
 ,('34327', '联合矿业货舰操作', '257', '9')
-,('34390', '艾玛战术驱逐舰操作', '257', '3');
+,('34390', '艾玛战术驱逐舰操作', '257', '3')
+,('34533', '米玛塔尔战术驱逐舰操作', '257', '3')
+,('35680', '加达里战术驱逐舰操作', '257', '3')
+,('35685', '盖伦特战术驱逐舰操作', '257', '3');
 
 -- ----------------------------
 -- Records of django_content_type

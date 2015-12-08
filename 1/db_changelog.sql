@@ -1,4 +1,26 @@
 
+
+-- 2015-12-08
+-- 从 破晓版(Mosaic1.2) 更新到 Parallax_1.0_115480 的数据库更新  start
+
+INSERT INTO datas_skill (id, skill_name, skill_group_id, skill_rank) VALUES 
+ ('35680', '加达里战术驱逐舰操作', '257', '3')
+,('35685', '盖伦特战术驱逐舰操作', '257', '3');
+
+-- 从 破晓版(Mosaic1.2) 更新到 Parallax_1.0_115480 的数据库更新  end
+
+
+
+-- 2015-06-29
+-- 从 破晓版 更新到 破晓版(Mosaic1.2) 的数据库更新  start
+
+INSERT INTO datas_skill (id, skill_name, skill_group_id, skill_rank) VALUES 
+ ('34533', '米玛塔尔战术驱逐舰操作', '257', '3');
+
+-- 从 破晓版 更新到 破晓版(Mosaic1.2) 的数据库更新  end
+
+
+
 -- 2015-03-14
 -- 修正由于CCP修改API接口导致EVEMon无法获取属性植入体信息的bug  start
 
