@@ -1,5 +1,21 @@
 
 
+-- 2016-01-20
+-- 从 Parallax_1.0_115480 到 Frostline_1.0_116241(捍卫者) 的数据库更新  start
+
+INSERT INTO datas_skillgroup (id, group_name) VALUES 
+ ('1545', 'Structure Management');
+
+INSERT INTO datas_skill (id, skill_name, skill_group_id, skill_rank) VALUES 
+ ('37615', 'Command Destroyers', '257', '6')
+,('40328', 'Logistics Frigates', '257', '4');
+
+update datas_skill set skill_name = '热能护盾补偿研究'         where id=11566;
+
+-- 从 Parallax_1.0_115480 到 Frostline_1.0_116241(捍卫者) 的数据库更新  end
+
+
+
 -- 2015-12-08
 -- 从 破晓版(Mosaic1.2) 更新到 Parallax_1.0_115480 的数据库更新  start
 
