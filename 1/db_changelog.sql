@@ -1,5 +1,50 @@
 
 
+-- 2016-08-24
+-- 从 Frostline_1.0_116241(捍卫者) 到 sde-20160809-TRANQUILITY(堡垒 YC118.6) 的数据库更新  start
+
+update datas_skillgroup set group_name     = '建筑管理'                 where id=1545;
+
+update datas_skill      set skill_group_id = '1545'                     where id=3373;
+update datas_skill      set skill_group_id = '1545'                     where id=11584;
+update datas_skill      set skill_name     = '后勤巡洋舰'               where id=12096;
+update datas_skill      set skill_name     = '电磁护盾补偿研究'         where id=12365;
+update datas_skill      set skill_name     = '动能护盾补偿研究'         where id=12366;
+update datas_skill      set skill_name     = '爆炸护盾补偿研究'         where id=12367;
+update datas_skill      set skill_name     = '武器扰乱'                 where id=19767;
+update datas_skill      set skill_name     = '超大型鱼雷'               where id=21668;
+update datas_skill      set skill_name     = '铁骑舰载机机库管理'       where id=24613;
+update datas_skill      set skill_name     = '护盾改装技术'             where id=26261;
+update datas_skill      set skill_name     = '脉冲波投射器操作'         where id=27911;
+update datas_skill      set skill_name     = '重型铁骑舰载机操控理论'   where id=32339;
+update datas_skill      set skill_name     = '超大型巡航导弹'           where id=32435;
+update datas_skill      set skill_name     = '抗性定相'                 where id=32797;
+update datas_skill      set skill_group_id = '1216'                     where id=32797;
+update datas_skill      set skill_name     = '勘探护卫舰操作'           where id=33856;
+update datas_skill      set skill_name     = '指挥驱逐舰操作'           where id=37615;
+update datas_skill      set skill_name     = '后勤护卫舰'               where id=40328;
+
+INSERT INTO datas_skill (id, skill_name, skill_group_id, skill_rank) VALUES 
+ ('37796', '建筑导弹系统研究',           '1545', '2')
+,('37797', '建筑末日武器操作技术',       '1545', '2')
+,('37798', '建筑电子系统研究',           '1545', '2')
+,('37799', '建筑工程系统研究',           '1545', '2')
+,('40572', '轻型铁骑舰载机操控理论',     '273',  '12')
+,('40573', '后勤铁骑舰载机操控理论',     '273',  '12')
+,('41403', '旗舰级自动加农炮专业研究',   '255',  '10')
+,('41404', '旗舰级火炮专业研究',         '255',  '10')
+,('41405', '旗舰级疾速炮专业研究',       '255',  '10')
+,('41406', '旗舰级磁轨炮专业研究',       '255',  '10')
+,('41407', '旗舰级脉冲激光专业研究',     '255',  '10')
+,('41408', '旗舰级集束激光专业研究',     '255',  '10')
+,('41409', '超大型鱼雷专业研究',         '256',  '10')
+,('41410', '超大型巡航导弹专业研究',     '256',  '10')
+,('41537', '末日武器快速发射',           '255',  '14');
+
+-- 从 Frostline_1.0_116241(捍卫者) 到 sde-20160809-TRANQUILITY(堡垒 YC118.6) 的数据库更新  end
+
+
+
 -- 2016-01-20
 -- 从 Parallax_1.0_115480 到 Frostline_1.0_116241(捍卫者) 的数据库更新  start
 
