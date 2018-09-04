@@ -1,0 +1,3 @@
+how to local run:
+	cd D:\dev\eve\evea\1
+	manage.py runserver
