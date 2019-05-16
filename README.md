@@ -27,9 +27,9 @@ evea 服务器中使用到了部分中文数据，如技能名称、技能组名
 ## 三，生成 EVEMon 中文数据包
 0，如果本人没有及时更新中文数据包版 EVEMon，可按以下方法自行生成 EVEMon 中文数据包
 
-1，检出 EVEMon 的源代码至本地。EVEMon 项目地址：https://bitbucket.org/EVEMonDevTeam/evemon
+1，检出 EVEMon 的源代码至本地。EVEMon 项目地址：https://github.com/evemondevteam/evemon
 
-2，按项目 wiki 的说明成功编译 EVEMon
+2，按项目 wiki 的说明成功编译 EVEMon：https://bitbucket.org/EVEMonDevTeam/evemon/wiki/Home
 
 3，阅读 wiki 中的“How to create the data files”这一节
 	这一篇 wiki 说的比较笼统，我下面说的都是对这篇 wiki 的补充
